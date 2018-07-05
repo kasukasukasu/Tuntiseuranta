@@ -1,12 +1,14 @@
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Kayttoliittyma {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Scanner lukija = new Scanner(System.in);
         Tietojenkyselija tk = new Tietojenkyselija();
         System.out.println("Tervetuloa HEU-tuntijärjestelmään!");
         while (true) {
-            System.out.print("Haluatko 1) syöttää työntekijän tiedot vai 2) syöttää tuntitiedot tai 3) lopettaa?");
+            System.out.print("Haluatko 1) syöttää työntekijän tiedot vai 2) syöttää tuntitiedot tai 3) lopettaa? ");
             String vastaus = lukija.nextLine();
             if (vastaus.equals("1")) {
                 lisaaTyontekija(lukija, tk);

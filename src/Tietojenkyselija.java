@@ -29,7 +29,6 @@ public class Tietojenkyselija {
             stmt.setDouble(3, tunnit);
             stmt.setString(4, tehtava);
             stmt.setString(5, laskutettava);
-            stmt.executeUpdate();
             int onnistui = stmt.executeUpdate();
             if (onnistui > 0) {
                 return onnistui;
@@ -87,7 +86,7 @@ public class Tietojenkyselija {
 //
 //    }
 
-    private Connection connect() throws SQLException {
+    public Connection connect() throws SQLException {
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tuntiseuranta?useSSL=false&serverTimezone=UTC",
                 "root", "salasana");
         return con;
