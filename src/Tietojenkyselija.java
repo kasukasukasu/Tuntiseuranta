@@ -20,10 +20,9 @@ public class Tietojenkyselija {
         return false;
     }
 
-    //TODO: mikä on työntekijä-id:n kentän nimi?
     public int lisaaTunnit(int id, int pvm, double tunnit, String tehtava, String laskutettava) {
         try (Connection con = connect()) {
-            String sql = "INSERT INTO tunnit (id, pvm, tunnit, tehtava, laskutettava) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO tunnit (kayttajaid, pvm, tunnit, tehtava, laskutettava) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stmt = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, id);
             stmt.setInt(2, pvm);
