@@ -1,4 +1,4 @@
-public class Työntekija {
+public class Tyontekija {
 
 
     private int käyttäjäid;
@@ -8,7 +8,7 @@ public class Työntekija {
 
 
 
-    public Työntekija(int käyttäjäid, String nimi, String osasto, String tehtävänimike) {
+    public Tyontekija(int käyttäjäid, String nimi, String osasto, String tehtävänimike) {
         this.käyttäjäid=käyttäjäid;
         this.nimi=nimi;
         this.osasto=osasto;
@@ -50,7 +50,7 @@ public class Työntekija {
 
     @Override
     public String toString() {
-        return "Työntekija{" +
+        return "Tyontekija{" +
                 "käyttäjäid=" + käyttäjäid +
                 ", nimi='" + nimi + '\'' +
                 ", osasto='" + osasto + '\'' +
