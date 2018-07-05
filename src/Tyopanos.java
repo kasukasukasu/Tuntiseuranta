@@ -1,15 +1,39 @@
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Tyopanos {
+    private int id;
+    private int kayttajaid;
     private int pvm;
-    private int tunnit;
+    private double tunnit;
     private String tehtävänkuvaus;
-    private String onkoLaskutettava;
+    private boolean onkoLaskutettava;
+    private Tyontekija tyontekija;
 
 
-    public Tyopanos(int pvm, int tunnit, String tehtävänkuvaus, String onkoLaskutettava) {
+    public Tyopanos(int pvm, double tunnit, String tehtävänkuvaus, boolean onkoLaskutettava) {
+        this.kayttajaid = id;
         this.pvm=pvm;
         this.tunnit=tunnit;
         this.tehtävänkuvaus=tehtävänkuvaus;
         this.onkoLaskutettava=onkoLaskutettava;
+    }
+
+    public Tyopanos(ResultSet rs) throws SQLException {
+        this.id = id;
+        this.kayttajaid = rs.getInt("kayttajaid");
+        this.pvm = rs.getInt("pvm");
+        this.tunnit = rs.getDouble("tunnit");
+        this.tehtävänkuvaus = rs.getString("tehtava");
+        this.onkoLaskutettava = rs.getBoolean("laskutettava");
+    }
+
+    public Tyontekija getTyontekija() {
+        return tyontekija;
+    }
+
+    public void setTyontekija(Tyontekija tyontekija) {
+        this.tyontekija = tyontekija;
     }
 
     public int getPvm() {
@@ -20,7 +44,7 @@ public class Tyopanos {
         this.pvm=pvm;
     }
 
-    public int getTunnit() {
+    public double getTunnit() {
         return tunnit;
     }
 
@@ -36,11 +60,11 @@ public class Tyopanos {
         this.tehtävänkuvaus=tehtävänkuvaus;
     }
 
-    public String getOnkoLaskutettava() {
+    public boolean getOnkoLaskutettava() {
         return onkoLaskutettava;
     }
 
-    public void setOnkoLaskutettava(String onkoLaskutettava) {
+    public void setOnkoLaskutettava(boolean onkoLaskutettava) {
         this.onkoLaskutettava=onkoLaskutettava;
     }
 

@@ -1,26 +1,32 @@
+import java.sql.ResultSet;
+
 public class Tyontekija {
 
 
-    private int käyttäjäid;
+    private int id;
     private String nimi;
     private String osasto;
-    private String tehtävänimike;
+    private String tehtavanimike;
 
 
 
-    public Tyontekija(int käyttäjäid, String nimi, String osasto, String tehtävänimike) {
-        this.käyttäjäid=käyttäjäid;
+    public Tyontekija(int id, String nimi, String osasto, String tehtavanimike) {
+        this.id=id;
         this.nimi=nimi;
         this.osasto=osasto;
-        this.tehtävänimike=tehtävänimike;
+        this.tehtavanimike=tehtavanimike;
+    }
+
+    public Tyontekija(ResultSet rs) {
+        this.id = id;
     }
 
     public int getKäyttäjäid() {
-        return käyttäjäid;
+        return id;
     }
 
     public void setKäyttäjäid(int käyttäjäid) {
-        this.käyttäjäid=käyttäjäid;
+        this.id=id;
     }
 
     public String getNimi() {
@@ -40,21 +46,21 @@ public class Tyontekija {
     }
 
     public String getTehtävänimike() {
-        return tehtävänimike;
+        return tehtavanimike;
     }
 
     public void setTehtävänimike(String tehtävänimike) {
-        this.tehtävänimike=tehtävänimike;
+        this.tehtavanimike=tehtävänimike;
     }
 
 
     @Override
     public String toString() {
         return "Tyontekija{" +
-                "käyttäjäid=" + käyttäjäid +
+                "käyttäjäid=" + id +
                 ", nimi='" + nimi + '\'' +
                 ", osasto='" + osasto + '\'' +
-                ", tehtävänimike='" + tehtävänimike + '\'' +
+                ", tehtävänimike='" + tehtavanimike + '\'' +
                 '}';
     }
 

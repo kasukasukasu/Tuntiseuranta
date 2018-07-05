@@ -58,30 +58,39 @@ public class Tietojenkyselija {
         return 0;
     }
 
-//    public List<Tyopanos> kaikkiTunnit() {
-//        List<Tyopanos> tunnit = new ArrayList<>();
-//        try (Connection con = connect()) {
-//            String sql = "SELECT * FROM tunnit JOIN kayttaja ON id=tekijaid";
-//            PreparedStatement stmt = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-//            stmt.setString(1, nimi);
-//            stmt.setString(2, osasto);
-//            stmt.setString(3, tehtavanimike);
-//            stmt.executeUpdate();
-//            ResultSet avaimet = stmt.getGeneratedKeys();
-//            if (avaimet.next()) {
-//                int id = avaimet.getInt(1);
-//                return id;
-//            }
-//        } catch (Exception e) {
-//
-//        }
-//        return 0;
-//    }
-//
-//    public List<Tyopanos> tyontekijanTunnit(int id) {
-//
-//    }
-//
+    public List<Tyopanos> kaikkiTunnit() {
+        List<Tyopanos> tunnit = new ArrayList<>();
+        try (Connection con = connect()) {
+            String sql = "SELECT * FROM tunnit JOIN kayttaja ON id=kayttajaid";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Tyopanos t = new Tyopanos(rs);
+                tunnit.add(t);
+            }
+        } catch (Exception e) {
+            System.out.println("Ei voitu lukea tunteja listalle");
+        }
+        return tunnit;
+    }
+
+    public List<Tyopanos> tyontekijanTunnit(int id) {
+        List<Tyopanos> tunnit = new ArrayList<>();
+        try (Connection con = connect()) {
+            String sql = "SELECT * FROM tunnit JOIN kayttaja ON id=kayttajaid WHERE kayttajaid=?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Tyopanos t = new Tyopanos(rs);
+                tunnit.add(t);
+            }
+        } catch (Exception e) {
+            System.out.println("Ei voitu lukea tunteja listalle");
+        }
+        return tunnit;
+    }
+
 //    public List<Tyopanos> laskutettavatTunnit() {
 //
 //    }
